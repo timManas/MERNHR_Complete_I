@@ -27,6 +27,8 @@ const connectDB = async () => {
 // Connect Backend to MongoDB
 connectDB()
 
+app.use(morgan('dev'))
+
 // Make the upload folder static
 const __dirname = path.resolve()
 
