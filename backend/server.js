@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 
 // Initialize Dot Env File
 dotenv.config()
