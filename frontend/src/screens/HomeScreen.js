@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useDispatch, useSelector } from 'react'
 
 const HomeScreen = () => {
   return (
