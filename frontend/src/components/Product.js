@@ -8,7 +8,6 @@ const Product = ({ product }) => {
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
         <Card.Text>{product.price}</Card.Text>
-        <Button variant='primary'></Button>
       </Card.Body>
     </Card>
   )
