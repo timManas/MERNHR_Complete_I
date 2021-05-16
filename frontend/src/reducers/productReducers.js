@@ -34,6 +34,7 @@ export const singleProductReducer = (state = { product: {} }, action) => {
     case PRODUCT_SINGLE_FAIL:
       return { error: action.payload }
     default:
+      console.log('DEFAULT CALLEDX ')
       return state
   }
 }

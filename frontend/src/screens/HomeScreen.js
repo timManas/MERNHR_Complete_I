@@ -9,7 +9,7 @@ const HomeScreen = () => {
   const productList = useSelector((state) => state.listProducts)
 
   const { products } = productList
-  console.log('ProductList: ' + JSON.stringify(products))
+  // console.log('ProductList: ' + JSON.stringify(products))
 
   useEffect(() => {
     dispatch(listProducts())
