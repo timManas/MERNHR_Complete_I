@@ -33,6 +33,8 @@ const ProductScreen = ({ match }) => {
         <Col>
           <Row>
             <h4>${product.price}</h4>
+          </Row>
+          <Row>
             {product.countInStock > 0 ? <Button>Add to cart</Button> : <></>}
           </Row>
         </Col>
