@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
 import productRoutes from './productRoutes.js'
+import userRoutes from './userRoutes.js'
 
 // Initialize Dot Env File
 dotenv.config()
@@ -30,7 +31,9 @@ const connectDB = async () => {
 connectDB()
 
 app.use(morgan('dev'))
+app.use(express.json())
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
 
 // Make the upload folder static
 const __dirname = path.resolve()
