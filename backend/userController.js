@@ -3,7 +3,6 @@ import User from './userModel.js'
 
 export const authUser = async (req, res) => {
   const { email, password } = req.body
-  console.log('Email: ' + email + '     Password: ' + password)
 
   // Check if user exists
   const currentUser = await User.findOne({ email })
@@ -11,19 +10,18 @@ export const authUser = async (req, res) => {
     res.json({ error: 'Not Found' })
     throw new Error()
   }
-  console.log('User: ' + currentUser)
 
   // Check if password match
-  if (currentUser.password == password) {
+  if (await currentUser.checkPassword(password)) {
     console.log('Password match')
     res.json({
-      id,
-      name,
-      email,
-      isAdmin,
+      _id: currentUser._id,
+      name: currentUser.name,
+      email: currentUser.email,
+      isAdmin: currentUser.isAdmin,
     })
   } else {
-    res.json({ error: 'Password did not match' })
+    res.status(401).json({ error: 'Password did not match' })
     throw new Error()
   }
 }
