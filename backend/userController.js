@@ -1,5 +1,6 @@
 import express from 'express'
 import User from './userModel.js'
+import generateToken from './generateToken.js'
 
 export const authUser = async (req, res) => {
   const { email, password } = req.body
@@ -19,6 +20,7 @@ export const authUser = async (req, res) => {
       name: currentUser.name,
       email: currentUser.email,
       isAdmin: currentUser.isAdmin,
+      token: generateToken(currentUser._id),
     })
   } else {
     res.status(401).json({ error: 'Password did not match' })
