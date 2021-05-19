@@ -18,13 +18,6 @@ const HomeScreen = () => {
   return (
     <>
       <h1>Current Products</h1>
-      {/* {products
-        ? products.map((product) => (
-            // console.log('Product: ' + JSON.stringify(product))
-            <Product key={product._id} product={product} />
-          ))
-        : console.log('Nothing yet')} */}
-
       <Row>
         {products.map((product) => (
           <Col key={product._id}>

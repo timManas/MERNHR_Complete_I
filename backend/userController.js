@@ -1,4 +1,3 @@
-import express from 'express'
 import User from './userModel.js'
 import generateToken from './generateToken.js'
 
