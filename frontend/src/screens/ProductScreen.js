@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSingleProduct } from '../actions/productActions'
-import Product from '../components/Product'
 import { Row, Col, Image, Button } from 'react-bootstrap'
 
 const ProductScreen = ({ match }) => {
