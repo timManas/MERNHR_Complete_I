@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../actions/userActions'
+import { userLoginReducer } from '../reducers/userReducers'
 
-const LoginScreen = () => {
+const LoginScreen = ({ match, location, history }) => {
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const userLogin = useSelector((state) => state.userLogin)
+  console.log(JSON.stringify(userLogin))
+  const { userInfo } = userLogin
+
+  useEffect(() => {
+    console.log('Here')
+    if (userInfo) {
+      history.push('/')
+    }
+  }, [dispatch, userInfo])
 
   const submitHandler = (e) => {
     e.preventDefault()

@@ -21,7 +21,6 @@ export const loginUser = (email, password) => async (dispatch) => {
       { email, password },
       config
     )
-    console.log('User Data: ' + JSON.stringify(data))
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
   } catch (error) {
