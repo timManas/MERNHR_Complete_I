@@ -13,20 +13,14 @@ export const loginUser = (email, password) => async (dispatch) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${}`
       },
     }
 
-    console.log('config: ' + JSON.stringify(config))
-
-    const body = {
-      email,
-      password,
-    }
-
-    console.log('body: ' + JSON.stringify(body))
-
-    const { data } = await axios.post('/api/users/login', body, config)
+    const { data } = await axios.post(
+      '/api/users/login',
+      { email, password },
+      config
+    )
     console.log('User Data: ' + JSON.stringify(data))
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data })

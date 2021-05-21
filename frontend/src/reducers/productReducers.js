@@ -20,7 +20,6 @@ export const listProductReducer = (state = { products: [] }, action) => {
       console.log(PRODUCT_LIST_FAIL + ' CALLED')
       return { error: action.payload }
     default:
-      console.log('DEFAULT CALLED')
       return state
   }
 }
@@ -34,7 +33,6 @@ export const singleProductReducer = (state = { product: {} }, action) => {
     case PRODUCT_SINGLE_FAIL:
       return { error: action.payload }
     default:
-      console.log('DEFAULT CALLEDX ')
       return state
   }
 }

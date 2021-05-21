@@ -6,12 +6,12 @@ import {
   USER_LOGOUT,
 } from '../constants/userConstants'
 
-export const userLoginReducer = (state = { data: {} }, action) => {
+export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return state
     case USER_LOGIN_SUCCESS:
-      return { data: action.payload }
+      return { userInfo: action.payload }
     case USER_LOGIN_FAIL:
       return { error: action.payload }
     case USER_LOGOUT:
