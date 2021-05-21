@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
+import { loginUser } from '../actions/userActions'
 
 const LoginScreen = () => {
   const dispatch = useDispatch()
@@ -10,7 +11,7 @@ const LoginScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     console.log('Email: ' + email + '     Password: ' + password)
-    // dispatch(loginUser(email, password))
+    dispatch(loginUser(email, password))
   }
 
   return (
