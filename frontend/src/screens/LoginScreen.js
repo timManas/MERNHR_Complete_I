@@ -14,7 +14,6 @@ const LoginScreen = ({ match, location, history }) => {
   const { userInfo } = userLogin
 
   useEffect(() => {
-    console.log('Here')
     if (userInfo) {
       history.push('/')
     }
