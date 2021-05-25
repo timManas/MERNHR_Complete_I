@@ -32,8 +32,13 @@ const Header = () => {
               </LinkContainer>
             ) : (
               <NavDropdown title={userInfo.name} id='basic-nav-dropdown'>
-                <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.2'>Log out</NavDropdown.Item>
+                <LinkContainer to='profile'>
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+
+                <LinkContainer to='logout'>
+                  <NavDropdown.Item>Log out</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
             )}
           </Nav>
