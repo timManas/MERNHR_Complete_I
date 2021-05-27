@@ -33,3 +33,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     })
   }
 }
+
+export const logoutUser = () => async (dispatch) => {
+  dispatch({ type: USER_LOGOUT })
+}
