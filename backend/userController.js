@@ -26,3 +26,28 @@ export const authUser = async (req, res) => {
     throw new Error()
   }
 }
+
+export const registerUser = async (req, res) => {
+  const { name, email, password } = req.body
+
+  // Check if the user exists
+  const currentuSER = await User.findOne({ email })
+  if (currentuSER) {
+    res.json({ error: 'Account already Exists' })
+    throw new Error()
+  }
+
+  // Add new User
+  console.log('Adding new User')
+  const newUser = User.create({ name, email, password, isAdmin: false })
+  if (newUser) {
+    console.log('Successfully added new user')
+    res.status(200).json({
+      name,
+      email,
+      isAdmin,
+    })
+  } else {
+    res.status(501).json({ error: 'Error creating new User' })
+  }
+}
