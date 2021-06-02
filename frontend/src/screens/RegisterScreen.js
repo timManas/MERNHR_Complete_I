@@ -5,7 +5,7 @@ import { registerUser } from '../actions/userActions'
 import { Form, Button } from 'react-bootstrap'
 
 const RegisterScreen = ({ match, location, history }) => {
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -33,10 +33,10 @@ const RegisterScreen = ({ match, location, history }) => {
       <h1>RegisterScreen</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type='name'
-            placeholder='Enter name'
+            placeholder='Enter Name'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
