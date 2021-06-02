@@ -54,9 +54,11 @@ export const registerUser = async (req, res) => {
   if (newUser) {
     console.log('Successfully added new user')
     res.status(200).json({
-      name,
-      email,
-      isAdmin: false,
+      _id: newUser._id,
+      name: newUser.name,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
+      token: generateToken(newUser._id),
     })
   } else {
     res.status(501).json({ error: 'Error creating new User' })
