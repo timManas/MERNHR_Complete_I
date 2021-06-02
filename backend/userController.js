@@ -1,5 +1,6 @@
 import User from './userModel.js'
 import generateToken from './generateToken.js'
+import bcrypt from 'bcryptjs'
 
 export const authUser = async (req, res) => {
   const { email, password } = req.body
@@ -37,15 +38,25 @@ export const registerUser = async (req, res) => {
     throw new Error()
   }
 
+  // Encrypt Password
+  const salt = bcrypt.genSaltSync(10)
+  const hash = bcrypt.hashSync(password, salt)
+  console.log('Hash: ' + hash)
+
   // Add new User
   console.log('Adding new User')
-  const newUser = User.create({ name, email, password, isAdmin: false })
+  const newUser = await User.create({
+    name,
+    email,
+    password: hash,
+    isAdmin: false,
+  })
   if (newUser) {
     console.log('Successfully added new user')
     res.status(200).json({
       name,
       email,
-      isAdmin,
+      isAdmin: false,
     })
   } else {
     res.status(501).json({ error: 'Error creating new User' })
