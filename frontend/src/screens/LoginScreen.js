@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../actions/userActions'
 import { userLoginReducer } from '../reducers/userReducers'
+import { Link } from 'react-router-dom'
 
 const LoginScreen = ({ match, location, history }) => {
   const dispatch = useDispatch()
@@ -51,8 +52,10 @@ const LoginScreen = ({ match, location, history }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Check me out' />
+        <Form.Group controlId='register'>
+          <Form.Text>
+            New Customer? <Link to={`/register`}>Register Here</Link>
+          </Form.Text>
         </Form.Group>
         <Button variant='primary' type='submit'>
           Submit
