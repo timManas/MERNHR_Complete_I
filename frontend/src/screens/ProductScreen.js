@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSingleProduct } from '../actions/productActions'
 import { Row, Col, Image, Button } from 'react-bootstrap'
+import { addProductToCart } from '../actions/cartActions'
 
 const ProductScreen = ({ match }) => {
   const dispatch = useDispatch()
@@ -14,6 +15,11 @@ const ProductScreen = ({ match }) => {
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id))
   }, [dispatch])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(addProductToCart(product))
+  }
 
   return (
     <>
@@ -34,7 +40,11 @@ const ProductScreen = ({ match }) => {
             <h4>${product.price}</h4>
           </Row>
           <Row>
-            {product.countInStock > 0 ? <Button>Add to cart</Button> : <></>}
+            {product.countInStock > 0 ? (
+              <Button onSubmit={submitHandler}>Add to cart</Button>
+            ) : (
+              <></>
+            )}
           </Row>
         </Col>
       </Row>

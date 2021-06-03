@@ -34,7 +34,7 @@ export const registerUser = async (req, res) => {
   // Check if the user exists
   const currentuSER = await User.findOne({ email })
   if (currentuSER) {
-    res.json({ error: 'Account already Exists' })
+    res.status(403).json({ error: 'Account already Exists' })
     throw new Error()
   }
 
@@ -61,6 +61,7 @@ export const registerUser = async (req, res) => {
       token: generateToken(newUser._id),
     })
   } else {
+    console.log('Error creating new User')
     res.status(501).json({ error: 'Error creating new User' })
   }
 }
