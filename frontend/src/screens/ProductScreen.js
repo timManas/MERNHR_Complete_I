@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSingleProduct } from '../actions/productActions'
 import { Row, Col, Image, Button } from 'react-bootstrap'
 import { addProductToCart } from '../actions/cartActions'
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ location, history, match }) => {
+  const [qty, setQty] = useState(1)
+
   const dispatch = useDispatch()
   const { product } = useSelector((state) => state.singleProduct)
 
@@ -18,7 +20,12 @@ const ProductScreen = ({ match }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(addProductToCart(product))
+
+    // Thinking Solution ... interesting ... we are not using dispatch
+    // dispatch(addProductToCart(product.id, qty))
+
+    // Actual Solution
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
   return (
