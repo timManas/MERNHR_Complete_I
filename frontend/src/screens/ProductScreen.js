@@ -25,6 +25,7 @@ const ProductScreen = ({ location, history, match }) => {
     // dispatch(addProductToCart(product.id, qty))
 
     // Actual Solution
+    console.log('Send to cart')
     history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
@@ -48,7 +49,7 @@ const ProductScreen = ({ location, history, match }) => {
           </Row>
           <Row>
             {product.countInStock > 0 ? (
-              <Button onSubmit={submitHandler}>Add to cart</Button>
+              <Button onClick={submitHandler}>Add to cart</Button>
             ) : (
               <></>
             )}
