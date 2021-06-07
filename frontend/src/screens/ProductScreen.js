@@ -18,14 +18,11 @@ const ProductScreen = ({ location, history, match }) => {
     dispatch(fetchSingleProduct(match.params.id))
   }, [dispatch])
 
-  const submitHandler = (e) => {
-    e.preventDefault()
-
+  const submitHandler = () => {
     // Thinking Solution ... interesting ... we are not using dispatch
     // dispatch(addProductToCart(product.id, qty))
 
     // Actual Solution
-    console.log('Send to cart')
     history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
@@ -49,7 +46,13 @@ const ProductScreen = ({ location, history, match }) => {
           </Row>
           <Row>
             {product.countInStock > 0 ? (
-              <Button onClick={submitHandler}>Add to cart</Button>
+              <Button
+                onClick={submitHandler}
+                className='btn-block'
+                type='button'
+              >
+                Add to cart
+              </Button>
             ) : (
               <></>
             )}
