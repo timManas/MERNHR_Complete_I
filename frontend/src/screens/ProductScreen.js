@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSingleProduct } from '../actions/productActions'
 import { Row, Col, Image, Button } from 'react-bootstrap'
-import { addProductToCart } from '../actions/cartActions'
 
 const ProductScreen = ({ location, history, match }) => {
   const [qty, setQty] = useState(1)

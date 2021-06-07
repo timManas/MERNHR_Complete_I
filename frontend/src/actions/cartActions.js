@@ -5,4 +5,4 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
 } from '../constants/cartConstants'
 
-export const addProductToCart = () => {}
+export const addProductToCart = (id, qty) => {}
