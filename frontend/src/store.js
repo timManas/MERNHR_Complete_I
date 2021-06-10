@@ -7,17 +7,28 @@ import {
 } from './reducers/productReducers'
 
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
+import { cartReducer } from './reducers/cartReducers'
 
 const reducers = combineReducers({
   listProducts: listProductReducer,
   singleProduct: singleProductReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  cart: cartReducer,
 })
 
 const middleware = [thunk]
 
-const initialState = {}
+// Fetch items from localStore if ANY
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : []
+
+const initialState = {
+  cart: {
+    cartItems: cartItemsFromStorage,
+  },
+}
 
 const store = createStore(
   reducers,

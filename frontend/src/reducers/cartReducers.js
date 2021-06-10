@@ -5,13 +5,34 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
 } from '../constants/cartConstants'
 
-export const cartReducer = (state = { cartItems: {} }, action) => {
+export const cartReducer = (
+  state = { cartItems: [], shippingAddress: {} },
+  action
+) => {
   switch (action.type) {
     case CART_ADD_ITEM:
+      const item = action.payload
+      console.log('State: ' + JSON.stringify(state))
+      const itemExists = state.cartItems.find((x) => x.product === item.product)
+
+      if (itemExists) {
+        return {
+          ...state,
+          cartItems: state.cartItems.map((x) =>
+            x.product === itemExists.product ? item : x
+          ),
+        }
+      } else {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, item],
+        }
+      }
+
     case CART_REMOVE_ITEM:
     case CART_SAVE_PAYMENT_METHOD:
     case CART_SAVE_SHIPPING_ADDRESS:
     default:
-      return {}
+      return state
   }
 }
