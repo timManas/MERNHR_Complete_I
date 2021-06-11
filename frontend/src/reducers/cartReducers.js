@@ -15,6 +15,7 @@ export const cartReducer = (
       console.log('State: ' + JSON.stringify(state))
       const itemExists = state.cartItems.find((x) => x.product === item.product)
 
+      // Add to cartItems if already exists. Otherwise add new item
       if (itemExists) {
         return {
           ...state,

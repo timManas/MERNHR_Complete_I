@@ -10,6 +10,7 @@ export const addProductToCart = (id, qty) => async (dispatch, getState) => {
   // Check if product even exists
   const { data } = await axios.get(`/api/products/${id}`)
 
+  // Payload is the product itself
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
