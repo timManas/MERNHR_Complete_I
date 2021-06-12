@@ -20,9 +20,9 @@ const CartScreen = ({ location, history, match }) => {
     }
   }, [dispatch, productId, qty])
 
-  const onClickHandler = () => {
+  const onClickHandler = (id) => {
     console.log('Clicked on Buttonx')
-    dispatch(removeProductFromCart(productId))
+    dispatch(removeProductFromCart(id))
   }
 
   return (
@@ -35,14 +35,14 @@ const CartScreen = ({ location, history, match }) => {
           ) : (
             <ListGroup>
               {cartItems.map((item) => (
-                <ListGroup.Item>
+                <ListGroup.Item key={item.product}>
                   <Col>
                     <Image src={item.image} />
                   </Col>
                   <Col>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col>{item.price}</Col>
+                  <Col>${item.price}</Col>
                   <Col>
                     <Form.Control
                       as='select'
@@ -63,6 +63,7 @@ const CartScreen = ({ location, history, match }) => {
                   <Col>
                     <Button
                       type='button'
+                      variant='light'
                       onClick={() => onClickHandler(item.product)}
                     >
                       x
