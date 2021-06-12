@@ -8,7 +8,7 @@ import {
   NavDropdown,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer, Link } from 'react-router-bootstrap'
 import { userLoginReducer } from '../reducers/userReducers'
 import { logoutUser } from '../actions/userActions'
 
@@ -26,7 +26,9 @@ const Header = () => {
   return (
     <>
       <Navbar bg='light' expand='lg'>
-        <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+        <LinkContainer to='/'>
+          <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>

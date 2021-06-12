@@ -63,8 +63,7 @@ const CartScreen = ({ location, history, match }) => {
                   <Col>
                     <Button
                       type='button'
-                      type='submit'
-                      onClick={onClickHandler}
+                      onClick={() => onClickHandler(item.product)}
                     >
                       x
                     </Button>
