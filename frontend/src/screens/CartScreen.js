@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductToCart } from '../actions/cartActions'
+import { addProductToCart, removeProductFromCart } from '../actions/cartActions'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -19,6 +19,11 @@ const CartScreen = ({ location, history, match }) => {
       dispatch(addProductToCart(productId, qty))
     }
   }, [dispatch, productId, qty])
+
+  const onClickHandler = () => {
+    console.log('Clicked on Buttonx')
+    dispatch(removeProductFromCart(productId))
+  }
 
   return (
     <>
@@ -56,7 +61,13 @@ const CartScreen = ({ location, history, match }) => {
                     </Form.Control>
                   </Col>
                   <Col>
-                    <Button type='button'>x</Button>
+                    <Button
+                      type='button'
+                      type='submit'
+                      onClick={onClickHandler}
+                    >
+                      x
+                    </Button>
                   </Col>
                 </ListGroup.Item>
               ))}
@@ -69,7 +80,10 @@ const CartScreen = ({ location, history, match }) => {
           </Row>
           <Row>
             {cartItems
-              .reduce((acc, item) => acc + item.qty * item.price, 0)
+              .reduce(
+                (accumulator, item) => accumulator + item.qty * item.price,
+                0
+              )
               .toFixed(2)}
           </Row>
           <Row>

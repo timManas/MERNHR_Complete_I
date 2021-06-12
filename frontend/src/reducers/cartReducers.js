@@ -31,8 +31,16 @@ export const cartReducer = (
       }
 
     case CART_REMOVE_ITEM:
-    case CART_SAVE_PAYMENT_METHOD:
-    case CART_SAVE_SHIPPING_ADDRESS:
+      const itemToBeRemoved = action.payload
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (item) => item.product !== itemToBeRemoved
+        ),
+      }
+
+    // case CART_SAVE_PAYMENT_METHOD:
+    // case CART_SAVE_SHIPPING_ADDRESS:
     default:
       return state
   }
