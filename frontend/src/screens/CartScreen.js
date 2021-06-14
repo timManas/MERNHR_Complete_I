@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart, removeProductFromCart } from '../actions/cartActions'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-dom'
 
 const CartScreen = ({ location, history, match }) => {
   const dispatch = useDispatch()
@@ -87,7 +88,9 @@ const CartScreen = ({ location, history, match }) => {
               .toFixed(2)}
           </Row>
           <Row>
-            <Button>Proceed to Checkout</Button>
+            <Link to={'/shipping'}>
+              <Button type='button'>Proceed to Checkout</Button>
+            </Link>
           </Row>
         </Col>
       </Row>
